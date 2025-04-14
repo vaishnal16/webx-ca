@@ -1,0 +1,7 @@
+streamlit
+python-dotenv
+speechrecognition
+pypdf
+requests
+keyboard
+pyaudio

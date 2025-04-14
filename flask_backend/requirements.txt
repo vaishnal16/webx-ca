@@ -1,0 +1,14 @@
+flask==2.2.3
+flask-cors==3.0.10
+flask-pymongo==2.3.0
+pymongo==4.3.3
+python-dotenv==1.0.0
+PyJWT==2.6.0
+werkzeug==2.2.3
+streamlit==1.23.1
+python-dotenv==1.0.0
+speechrecognition==3.10.0
+pypdf==3.15.1
+requests==2.31.0
+keyboard==0.13.5
+pyaudio==0.2.13 
