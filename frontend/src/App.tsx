@@ -9,6 +9,7 @@ import InterviewPrep from './pages/InterviewPrep';
 import ResumeBuilder from './pages/ResumeBuilder';
 import MockInterviewPrep from './pages/MockInterviewpPrep';
 import MockInterviewHelp from './pages/MockInterviewHelp';
+import AIInterview from './pages/AIInterview';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/resume" element={<ResumeBuilder />} />
         <Route path="/interview-prep" element={<MockInterviewPrep />} />
         <Route path="/mock-interview-help" element={<MockInterviewHelp />} />
+        <Route path="/ai-interview" element={<AIInterview />} />
       </Routes>
     </Router> 
     </>

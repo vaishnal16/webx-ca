@@ -79,21 +79,21 @@ const InterviewPerformance: React.FC<InterviewPerformanceProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8">
-        <div className="w-16 h-16 border-t-4 border-indigo-500 border-solid rounded-full animate-spin"></div>
-        <p className="mt-4 text-gray-600">Loading performance data...</p>
+      <div className="flex flex-col items-center justify-center h-full p-6">
+        <div className="w-12 h-12 border-t-4 border-indigo-500 border-solid rounded-full animate-spin"></div>
+        <p className="mt-3 text-slate-600">Loading performance data...</p>
       </div>
     );
   }
 
   if (!performance || performance.questionResults.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-        <div className="bg-indigo-100 rounded-full p-4 mb-4">
-          <Users className="h-10 w-10 text-indigo-600" />
+      <div className="flex flex-col items-center justify-center h-full p-6 text-center">
+        <div className="bg-indigo-50 rounded-full p-4 mb-4">
+          <Users className="h-8 w-8 text-indigo-600" />
         </div>
-        <h3 className="text-xl font-medium text-gray-900 mb-2">No Interview Data</h3>
-        <p className="text-gray-600 max-w-md">
+        <h3 className="text-lg font-medium text-slate-900 mb-2">No Interview Data</h3>
+        <p className="text-slate-600 max-w-md">
           You haven't completed any interview sessions yet. Start a new interview to see your performance metrics.
         </p>
       </div>
@@ -105,26 +105,26 @@ const InterviewPerformance: React.FC<InterviewPerformanceProps> = ({
     { 
       name: 'Overall Score', 
       value: performance.overallScore, 
-      icon: <Award className="h-5 w-5" />,
-      color: 'bg-green-100 text-green-600'
+      icon: <Award className="h-4 w-4" />,
+      color: 'bg-green-50 text-green-600'
     },
     { 
       name: 'Technical Accuracy', 
       value: Math.round(performance.questionResults.reduce((sum, q) => sum + q.score, 0) / performance.questionResults.length), 
-      icon: <Check className="h-5 w-5" />,
-      color: 'bg-blue-100 text-blue-600' 
+      icon: <Check className="h-4 w-4" />,
+      color: 'bg-blue-50 text-blue-600' 
     },
     { 
       name: 'Response Quality', 
       value: performance.overallScore > 75 ? 82 : 68, 
-      icon: <BarChart2 className="h-5 w-5" />,
-      color: 'bg-purple-100 text-purple-600' 
+      icon: <BarChart2 className="h-4 w-4" />,
+      color: 'bg-purple-50 text-purple-600' 
     },
     { 
       name: 'Improvement Trend', 
       value: 12, 
-      icon: <ArrowUpRight className="h-5 w-5" />,
-      color: 'bg-indigo-100 text-indigo-600' 
+      icon: <ArrowUpRight className="h-4 w-4" />,
+      color: 'bg-indigo-50 text-indigo-600' 
     }
   ];
 
@@ -159,22 +159,22 @@ const InterviewPerformance: React.FC<InterviewPerformanceProps> = ({
   };
 
   return (
-    <div className="h-full overflow-y-auto bg-gray-50 p-6">
+    <div className="h-full bg-slate-50 p-4">
       {/* Summary Section */}
-      <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-          <PieChart className="mr-2 h-5 w-5 text-indigo-600" />
+      <div className="bg-white rounded-xl shadow-sm p-4 mb-4">
+        <h2 className="text-lg font-bold text-slate-900 mb-3 flex items-center">
+          <PieChart className="mr-2 h-4 w-4 text-indigo-600" />
           Performance Summary
         </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {metrics.map((metric, index) => (
-            <div key={index} className="bg-white rounded-lg p-4 border border-gray-100">
-              <div className={`${metric.color} rounded-full w-10 h-10 flex items-center justify-center mb-3`}>
+            <div key={index} className="bg-white rounded-lg p-3 border border-slate-100 shadow-sm hover:shadow transition-shadow">
+              <div className={`${metric.color} rounded-full w-8 h-8 flex items-center justify-center mb-2`}>
                 {metric.icon}
               </div>
-              <div className="text-sm text-gray-500">{metric.name}</div>
-              <div className="text-2xl font-bold mt-1">
+              <div className="text-xs text-slate-500">{metric.name}</div>
+              <div className="text-xl font-bold mt-1">
                 {metric.name === 'Improvement Trend' ? `+${metric.value}%` : `${metric.value}%`}
               </div>
             </div>
@@ -183,34 +183,34 @@ const InterviewPerformance: React.FC<InterviewPerformanceProps> = ({
       </div>
       
       {/* Question Performance */}
-      <div className="bg-white rounded-xl shadow-sm p-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-          <Lightbulb className="mr-2 h-5 w-5 text-indigo-600" />
+      <div className="bg-white rounded-xl shadow-sm p-4">
+        <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center">
+          <Lightbulb className="mr-2 h-4 w-4 text-indigo-600" />
           Question Breakdown
         </h2>
         
-        <div className="space-y-8">
+        <div className="space-y-5">
           {performance.questionResults.map((questionResult, index) => (
-            <div key={index} className="border-b border-gray-100 pb-6 last:border-b-0 last:pb-0">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-md font-medium text-gray-900 pr-4">{questionResult.question}</h3>
-                <div className={`text-lg font-bold ${getScoreColor(questionResult.score)}`}>
+            <div key={index} className="border-b border-slate-100 pb-5 last:border-b-0 last:pb-0">
+              <div className="flex justify-between items-start mb-3">
+                <h3 className="text-sm font-medium text-slate-900 pr-4">{questionResult.question}</h3>
+                <div className={`text-base font-bold ${getScoreColor(questionResult.score)}`}>
                   {questionResult.score}%
                 </div>
               </div>
               
               {/* Feedback List */}
-              <div className="mb-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-2">Key Points Analysis:</h4>
-                <div className="space-y-2">
+              <div className="mb-3">
+                <h4 className="text-xs font-medium text-slate-700 mb-2">Key Points Analysis:</h4>
+                <div className="space-y-1.5 pl-1">
                   {formatFeedback(questionResult).map((item, i) => (
                     <div key={i} className="flex items-start">
-                      <div className={`flex-shrink-0 mt-1 ${
+                      <div className={`flex-shrink-0 mt-0.5 ${
                         item.type === 'positive' ? 'text-green-500' : 'text-red-500'
                       }`}>
-                        {item.type === 'positive' ? <Check className="h-4 w-4" /> : <X className="h-4 w-4" />}
+                        {item.type === 'positive' ? <Check className="h-3 w-3" /> : <X className="h-3 w-3" />}
                       </div>
-                      <p className={`ml-2 text-sm ${
+                      <p className={`ml-2 text-xs ${
                         item.type === 'positive' ? 'text-green-700' : 'text-red-700'
                       }`}>
                         {item.text}
@@ -221,9 +221,9 @@ const InterviewPerformance: React.FC<InterviewPerformanceProps> = ({
               </div>
               
               {/* Feedback */}
-              <div className="bg-indigo-50 rounded-lg p-4">
-                <h4 className="text-sm font-medium text-indigo-800 mb-1">Interviewer Feedback:</h4>
-                <p className="text-sm text-indigo-700">{questionResult.feedback}</p>
+              <div className="bg-indigo-50 rounded-lg p-3">
+                <h4 className="text-xs font-medium text-indigo-800 mb-1">Interviewer Feedback:</h4>
+                <p className="text-xs text-indigo-700">{questionResult.feedback}</p>
               </div>
             </div>
           ))}

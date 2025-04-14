@@ -37,10 +37,11 @@ const Dashboard: React.FC = () => {
 
   // Navigation items array
   const navigationItems: NavigationItem[] = [
-    { to: "/resume", icon: FileText, label: "Resume" },
-    { to: "/exam-prep", icon: BookOpen, label: "Exam Prep" },
-    { to: "/roadmap", icon: MapPin, label: "Roadmap" },
-    { to: "/interview-prep", icon: MapPin, label: "Interview Prep" }
+    // { to: "/resume", icon: FileText, label: "Resume" },
+    // { to: "/exam-prep", icon: BookOpen, label: "Exam Prep" },
+    // { to: "/roadmap", icon: MapPin, label: "Roadmap" },
+    // { to: "/interview-prep", icon: MapPin, label: "Interview Prep" },
+    { to: "/ai-interview", icon: Users, label: "AI Interview" }
   ];
 
   return (
@@ -164,22 +165,31 @@ const Dashboard: React.FC = () => {
               <p className="text-xl text-gray-600">Comprehensive tools and resources for your career journey</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
                   icon: BookOpen,
                   title: "AI Mock Interviews",
-                  description: "Practice with our intelligent AI interviewer that adapts to your responses and provides real-time feedback."
+                  description: "Practice with our intelligent AI interviewer that adapts to your responses and provides real-time feedback.",
+                  link: "/interview-prep"
+                },
+                {
+                  icon: Users,
+                  title: "Technical AI Interview",
+                  description: "Master technical interviews with our specialized AI coach offering in-depth evaluation of your coding answers.",
+                  link: "/ai-interview"
                 },
                 {
                   icon: FileText,
                   title: "Smart Resume Builder",
-                  description: "Create ATS-friendly resumes using our dynamic builder, which offers real-time editing."
+                  description: "Create ATS-friendly resumes using our dynamic builder, which offers real-time editing.",
+                  link: "/resume"
                 },
                 {
                   icon: MapPin,
                   title: "Personalized Roadmap",
-                  description: "Follow a customized learning path based on your goals, experience level, and target roles."
+                  description: "Follow a customized learning path based on your goals, experience level, and target roles.",
+                  link: "/roadmap"
                 }
               ].map((feature, index) => (
                 <div
@@ -195,7 +205,14 @@ const Dashboard: React.FC = () => {
                     }`} />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                  <p className="text-gray-600 leading-relaxed mb-4">{feature.description}</p>
+                  <Link 
+                    to={feature.link} 
+                    className="inline-flex items-center text-indigo-600 hover:text-indigo-700"
+                  >
+                    Try now 
+                    <ChevronRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
                 </div>
               ))}
             </div>
